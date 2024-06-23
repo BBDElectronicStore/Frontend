@@ -1,0 +1,14 @@
+#main {
+    margin: 2em;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+mat-card-content {
+    padding: 1em;
+    align-content: center;
+}
+
+#stats {
+    margin: 2em;
+}
