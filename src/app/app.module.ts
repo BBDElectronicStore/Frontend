@@ -1,6 +1,5 @@
 import { NgModule } from "@angular/core";
 import { AppComponent } from "./app.component";
-import { ProductsComponent } from  './tabs/products/products.tab'
 import { BrowserModule } from "@angular/platform-browser";
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -8,14 +7,12 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { MatCardModule } from "@angular/material/card";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatCheckboxModule } from "@angular/material/checkbox";
+import { SalesComponent } from "./tabs/sales/sales.tab";
 import { AccountsComponent } from "./tabs/accounts/accounts.tab";
-import { SharesComponent } from "./tabs/shares/shares.tab";
+import { ProductsComponent } from "./tabs/products/products.tab";
 
 @NgModule({ declarations: [
-    AppComponent,
-    ProductsComponent,
-    AccountsComponent,
-    SharesComponent
+    AppComponent
 ],
 bootstrap: [AppComponent],
 imports: [BrowserModule,
@@ -23,7 +20,10 @@ imports: [BrowserModule,
     BrowserAnimationsModule,
     MatCardModule,
     MatSidenavModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    SalesComponent,
+    AccountsComponent,
+    ProductsComponent
 ],
 providers: [
   provideAnimationsAsync()
