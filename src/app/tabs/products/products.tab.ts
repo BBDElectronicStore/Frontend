@@ -1,10 +1,16 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { MatCard } from '@angular/material/card';
+import { MatCardContent } from '@angular/material/card';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.tab.html',
-  styleUrls: ['./products.tab.css']
+  styleUrls: ['./products.tab.css'],
+  standalone: true,
+  imports: [
+    MatCard,
+    MatCardContent
+  ]
 })
 export class ProductsComponent {
   title = 'products';

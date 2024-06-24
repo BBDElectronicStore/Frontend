@@ -20,9 +20,9 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 
 @Component({
-  selector: 'app-accounts',
-  templateUrl: './accounts.tab.html',
-  styleUrls: ['./accounts.tab.css'],
+  selector: 'app-sales',
+  templateUrl: './sales.tab.html',
+  styleUrls: ['./sales.tab.css'],
   standalone: true,
   imports: [
     FormsModule,
@@ -38,9 +38,9 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
     MatPaginatorModule
   ],
   providers: [provideNativeDateAdapter()],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AccountsComponent implements OnInit, AfterViewInit {
+export class SalesComponent implements OnInit, AfterViewInit {
   //Filters
   myControl = new FormControl('');
   options: string[] = ['One', 'Two', 'Three'];
