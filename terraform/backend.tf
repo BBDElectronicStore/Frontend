@@ -1,8 +1,8 @@
 terraform {
   backend "s3" {
-    bucket         = "-state" # add account id to the bucket name
+    bucket         = "268644478934-state"
     key            = "frontend/terraform.tfstate"
     region         = "eu-west-1"
-    dynamodb_table = "-state" # add account id to the table name
+    dynamodb_table = "268644478934-state"
   }
 }
