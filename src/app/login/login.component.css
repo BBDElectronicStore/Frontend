@@ -1,0 +1,203 @@
+:root {
+    /* Variables */
+    --header-height: 3rem;
+    --font-medium: 500;
+    /* Colors */
+    --accent-color-left: #c31432;
+    --accent-color-right: #240b36;
+
+    --first-color: #c31432;
+    /*--white-color: #FAFAFF;*/
+    --white-color: #dddddd;
+    --dark-color: #2A3B47;
+    --text-color: #aaaaaa;
+    /* Fonts */
+    --body-font: 'Montserrat', sans-serif;
+    --big-font-size: 6.25rem;
+    --h2-font-size: 1.25rem;
+    --normal-font-size: .938rem;
+    --small-font-size: .813rem;
+    /* Margins */
+    --mb-1: .5rem;
+    --mb-2: 1rem;
+    --mb-3: 1.5rem;
+    --mb-4: 2rem;
+    /* z-index */
+    --z-fixed: 100;
+}
+
+.section {
+    padding: 3rem 0;
+    background-color: rgba(0, 0, 0, .8);
+}
+.home {
+    position: relative;
+    background: #c31432;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, var(--accent-color-left), var(--accent-color-right));  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, var(--accent-color-left), var(--accent-color-right)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    overflow: hidden;
+    box-shadow: 0 20px 25px rgba(0, 0, 0, .5);
+}
+.home-container {
+    height: calc(100vh - var(--header-height));
+    row-gap: 5rem;
+}
+.home-title {
+    align-self: flex-end;
+    font-size: var(--big-font-size);
+    color: var(--white-color);
+    line-height: .8;
+}
+@media screen and (max-width: 550px) {
+    .home-title {
+        font-size: calc(var(--big-font-size) - 1rem);
+    }
+}
+@media screen and (max-width: 480px) {
+    .home-title {
+        font-size: calc(var(--big-font-size) - 3.5rem);
+    }
+}
+.home-title span {
+    text-shadow: 0 20px 25px rgba(0, 0, 0, .5);
+}
+.home-scroll {
+    align-self: flex-end;
+    padding-bottom: var(--mb-4);
+}
+.home-scroll-link {
+    writing-mode: vertical-lr;
+    transform: rotate(-180deg);
+    color: var(--white-color);
+}
+.home-img {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 295px;
+}
+/*Home animation*/
+@keyframes animate{
+    0%{
+        transform: translateY(0) rotate(0deg) scale(1);
+        opacity: 1;
+    }
+    100%{
+        transform: translateY(-110vh) rotate(360deg) scale(0);
+        opacity: 0;
+    }
+}
+.box-area {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.box-area li {
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 25px;
+    height: 25px;
+    background: rgba(255, 255, 255, .2);
+    animation: animate 20s linear infinite;
+    bottom: -200px;
+}
+.box-area li:nth-child(1) {
+    left: 4%;
+    width: 50px;
+    height: 50px;
+    animation-delay: 1.5s;
+    animation-duration: 10s;
+    border-radius: 50%;
+}
+.box-area li:nth-child(2) {
+    left: 12%;
+    width: 140px;
+    height: 140px;
+    animation-delay: 3.5s;
+    animation-duration: 20s;
+    border-radius: 50%;
+}
+.box-area li:nth-child(3) {
+    left: 25%;
+    width: 95px;
+    height: 95px;
+    animation-delay: 4s;
+    animation-duration: 13s;
+    border-radius: 50%;
+}
+.box-area li:nth-child(4) {
+    left: 32%;
+    width: 170px;
+    height: 170px;
+    animation-delay: 0s;
+    animation-duration: 24s;
+    border-radius: 50%;
+}
+.box-area li:nth-child(5) {
+    left: 45%;
+    width: 135px;
+    height: 135px;
+    animation-delay: 2s;
+    animation-duration: 14s;
+    border-radius: 50%;
+}
+.box-area li:nth-child(6) {
+    left: 56%;
+    width: 40px;
+    height: 40px;
+    animation-delay: 0.6s;
+    animation-duration: 7s;
+    border-radius: 50%;
+}
+.box-area li:nth-child(7) {
+    left: 65%;
+    width: 60px;
+    height: 60px;
+    animation-delay: 0s;
+    animation-duration: 13s;
+    border-radius: 50%;
+}
+.box-area li:nth-child(8) {
+    left: 70%;
+    width: 115px;
+    height: 115px;
+    animation-delay: 5.5s;
+    animation-duration: 17s;
+    border-radius: 50%;
+}
+.box-area li:nth-child(9) {
+    left: 77%;
+    width: 155px;
+    height: 155px;
+    animation-delay: 1s;
+    animation-duration: 23s;
+    border-radius: 50%;
+}
+.box-area li:nth-child(10) {
+    left: 86%;
+    width: 100px;
+    height: 100px;
+    animation-delay: 0s;
+    animation-duration: 15s;
+    border-radius: 50%;
+}
+.box-area li:nth-child(11) {
+    left: 90%;
+    width: 52px;
+    height: 52px;
+    animation-delay: 4s;
+    animation-duration: 11s;
+    border-radius: 50%;
+}
+.box-area li:nth-child(12) {
+    left: 93%;
+    width: 105px;
+    height: 105px;
+    animation-delay: 2.5s;
+    animation-duration: 19s;
+    border-radius: 50%;
+}
