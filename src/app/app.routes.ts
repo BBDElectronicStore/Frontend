@@ -7,10 +7,3 @@ export const routes: Routes = [
     { path: '', pathMatch: 'full', component: LoginComponent },
     { path: 'home', component: HomeComponent }
 ];
-
-// @NgModule({
-//   imports: [RouterModule.forRoot(routes)],
-//   exports: [RouterModule]
-// })
-
-// export class AppRoutingModule {}
