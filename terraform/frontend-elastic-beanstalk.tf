@@ -3,6 +3,11 @@ data "aws_vpc" "main" {
     Name = "main-vpc"
   }
 }
+resource "aws_s3_bucket" "beanstalk_bucket" {
+  bucket        = "${local.account-id}-deploy-bucket"
+  force_destroy = true
+}
+
 
 data "aws_subnet" "public_subnet_eu_west_1a" {
   vpc_id = data.aws_vpc.main.id
@@ -49,8 +54,6 @@ resource "aws_elastic_beanstalk_environment" "nodejs_env" {
   application         = aws_elastic_beanstalk_application.nodejs_app.name
   solution_stack_name = "64bit Amazon Linux 2023 v6.1.5 running Node.js 20"
   tier                = "WebServer"
-
-
   setting {
     namespace = "aws:ec2:vpc"
     name      = "VPCId"
@@ -156,6 +159,4 @@ resource "aws_elastic_beanstalk_environment" "nodejs_env" {
     name      = "ManagedActionsEnabled"
     value     = "false"
   }
-  
-
 }
