@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+    /* Variables */
+    --header-height: 3rem;
+    --font-medium: 500;
+    /* Colors */
+    --accent-color-left: #004AAD;
+    --accent-color-right: #38B6FF;
+
+    --first-color: #38B6FF;
+    /*--white-color: #FAFAFF;*/
+    --white-color: #dddddd;
+    --dark-color: #2A3B47;
+    --text-color: #aaaaaa;
+    /* Fonts */
+    --body-font: 'Montserrat', sans-serif;
+    --big-font-size: 5.25rem;
+    --med-font-size: 1.25rem;
+    --normal-font-size: .938rem;
+    --small-font-size: .813rem;
+    /* Margins */
+    --mb-1: .5rem;
+    --mb-2: 1rem;
+    --mb-3: 1.5rem;
+    --mb-4: 2rem;
+    /* z-index */
+    --z-fixed: 100;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
