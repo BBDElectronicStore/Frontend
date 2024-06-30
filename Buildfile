@@ -1,2 +1,1 @@
-NodeInstall: npm install
-NodeRunBuild: npm run build
+install: npm install & npm run build
