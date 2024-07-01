@@ -1,6 +1,6 @@
 export interface User {
-    sub: String,
-    email_verified: String,
-    email: String,
-    username: String
+    sub: string,
+    email_verified: string,
+    email: string,
+    username: string
 }
