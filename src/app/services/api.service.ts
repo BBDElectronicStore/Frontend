@@ -1,23 +1,26 @@
-import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { environment } from "../../environments/environment";
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Product } from "../interfaces/product";
 
+@Injectable({providedIn: 'root'})
 export class ApiService {
     baseURL: string = environment.baseURL;
-    header: any; // idk where do to the header and the auth
 
     constructor(private http: HttpClient){}
 
-    getProduct(): Observable<ArrayBuffer> {
-        return this.http.get(this.baseURL + '/product', this.header);
+    getProduct(): Observable<Product> {
+        return this.http.get<Product>(this.baseURL + '/product');
     }
 
-    getAccount(currentPage: number, currentPageSize: number, name: string, date: number): Observable<ArrayBuffer> {
-        return this.http.get(this.baseURL + `/account?page=${currentPage}&size=${currentPageSize}&name=${name}&date=${date}`, this.header)
+    //TODO: add account and sales objects
+    getAccount(currentPage: number, currentPageSize: number, name: string, date: number): Observable<Object> {
+        return this.http.get(this.baseURL + `/account?page=${currentPage}&size=${currentPageSize}&name=${name}&date=${date}`)
     }
 
-    getSales(currentPage: number, currentPageSize: number, name: string, date: number): Observable<ArrayBuffer> {
-        return this.http.get(this.baseURL + `/sales?page=${currentPage}&size=${currentPageSize}&name=${name}&date=${date}`, this.header)
+    getSales(currentPage: number, currentPageSize: number, name: string, date: number): Observable<Object> {
+        return this.http.get(this.baseURL + `/sales?page=${currentPage}&size=${currentPageSize}&name=${name}&date=${date}`)
     }
 
 }

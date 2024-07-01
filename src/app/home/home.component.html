@@ -2,7 +2,7 @@
     <section id="title">
         <img id="logo" src="../assets/images/android-chrome-192x192.png" alt="Electronic Retailer Logo">
         <h1 id="business-name">{{ businessName }}</h1>
-        <a mat-fab extended routerLink="/">
+        <a mat-fab extended (click)="logout()">
             Logout
             <mat-icon>arrow_right_alt</mat-icon>
           </a>
