@@ -35,13 +35,7 @@ export function authInterceptor(
     );
   }
 
-  const authReq = req.clone({
-    setHeaders: {
-      Authorization: `Bearer ${authToken}`
-    }
-  });
-
-  return handleRequestWithAuth(authReq, next, authService);
+  return handleRequestWithAuth(req, next, authService, authToken);
 }
 
 function handleRequestWithoutAuth(
@@ -57,15 +51,24 @@ function handleRequestWithoutAuth(
 function handleRequestWithAuth(
   req: HttpRequest<unknown>,
   next: HttpHandlerFn,
-  authService: AuthService
+  authService: AuthService,
+  authToken: string
 ): Observable<HttpEvent<unknown>> {
-  return next(req).pipe(
+  const authReq = req.clone({
+    setHeaders: {
+      Authorization: `Bearer ${authToken}`
+    }
+  });
+  return next(authReq).pipe(
     catchError((error: HttpErrorResponse) => {
       if (error.status === 401) {
         return handleTokenRefresh(req, next, authService);
       }
       return throwError(
-        () => new Error(`Authorized request error: ${error.status}: ${error.message}`)
+        () =>
+          new Error(
+            `Authorized request error: ${error.status}: ${error.message}`
+          )
       );
     }),
     tap(event => logResponse(event, req.url))
@@ -92,18 +95,21 @@ function handleTokenRefresh(
     }),
     catchError((error: HttpErrorResponse) => {
       return throwError(
-        () => new Error(`Refresh token failed: ${error.status}: ${error.message}`)
+        () =>
+          new Error(`Refresh token failed: ${error.status}: ${error.message}`)
       );
     })
   );
 }
 
 function handleError(error: HttpErrorResponse): Observable<never> {
-  return throwError(() => new Error(`Request failed: ${error.status}: ${error.message}`));
+  return throwError(
+    () => new Error(`Request failed: ${error.status}: ${error.message}`)
+  );
 }
 
 function logResponse(event: HttpEvent<unknown>, url: string): void {
-    //TODO: log to file
+  //TODO: log to file
   if (event.type === HttpEventType.Response) {
     console.log(url, 'returned a response with status', event.status);
   }
