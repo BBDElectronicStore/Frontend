@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { devEnvironment } from '../../environments/environment.development';
 
 @Component({
   selector: 'app-login',
@@ -10,4 +11,11 @@ import { MatIconModule } from '@angular/material/icon';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {}
+export class LoginComponent {
+  constructor(private router: Router) {}
+
+  login() {
+    window.location.href = devEnvironment.cognitoURL;
+  }
+    
+}
