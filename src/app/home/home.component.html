@@ -1,10 +1,9 @@
 <section id="top-bar">
     <section id="title">
-        <img id="logo" src="../assets/images/android-chrome-192x192.png" alt="Electronic Retailer Logo">
-        <h1 id="business-name">{{ businessName }}</h1>
+        <img id="logo" src="../assets/images/logo-full.png" alt="Electronic Retailer Logo">
         <a mat-fab extended (click)="logout()">
-            Logout
-            <mat-icon>arrow_right_alt</mat-icon>
+            <span id="logout-text">Logout</span>
+            <mat-icon id="icon">power_settings_new</mat-icon>
           </a>
     </section>
     <mat-tab-group class="custom" dynamicHeight>
