@@ -1,4 +1,4 @@
-export const devEnvironment = {
+export const environment = {
     baseURL: "",
     cognitoURL: "https://byte-bazaar.auth.eu-west-1.amazoncognito.com/oauth2/authorize?client_id=2r9cieeqb6k9k441h6vnkch4te&response_type=code&identity_provider=Google&scope=email+openid+phone&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Fhome",
     tokenURL: "https://byte-bazaar.auth.eu-west-1.amazoncognito.com/oauth2/token",
