@@ -19,15 +19,15 @@ jobs:
     uses: ./.github/workflows/prod-ci.yaml
     secrets: inherit
 
-  terraform-apply:
-    name: "Terraform apply"
-    needs: prod-ci
-    secrets: inherit
-    uses: ./.github/workflows/terraform-cd.yaml
+  # terraform-apply:
+  #   name: "Terraform apply"
+  #   needs: prod-ci
+  #   secrets: inherit
+  #   uses: ./.github/workflows/terraform-cd.yaml
 
-  release-cd:
-    name: "Deploy NodeJS API"
-    needs: terraform-apply
-    secrets: inherit
-    uses: ./.github/workflows/deploy.yaml 
+  # release-cd:
+  #   name: "Deploy NodeJS API"
+  #   needs: terraform-apply
+  #   secrets: inherit
+  #   uses: ./.github/workflows/deploy.yaml 
 
