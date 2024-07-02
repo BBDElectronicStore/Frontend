@@ -12,8 +12,7 @@ import {
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthService } from '../services/auth.service';
-import { devEnvironment } from '../../environments/environment.development';
-import { Observable, catchError, of, throwError } from 'rxjs';
+import { catchError, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
