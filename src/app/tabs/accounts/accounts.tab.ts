@@ -4,7 +4,7 @@ import {
   OnInit,
   ChangeDetectionStrategy,
   AfterViewInit,
-  ViewChild,
+  ViewChild
 } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -18,6 +18,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatIcon } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-accounts',
@@ -35,7 +37,9 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
     MatCardModule,
     MatDatepickerModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatIcon,
+    MatButtonModule
   ],
   providers: [provideNativeDateAdapter()],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -54,7 +58,7 @@ export class AccountsComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
-      map((value) => this._filter(value || ''))
+      map(value => this._filter(value || ''))
     );
   }
 
@@ -62,10 +66,14 @@ export class AccountsComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
 
+  refresh() {
+    // TODO: update table with new data
+  }
+
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.options.filter((option) =>
+    return this.options.filter(option =>
       option.toLowerCase().includes(filterValue)
     );
   }
@@ -98,5 +106,5 @@ const ELEMENT_DATA: PeriodicElement[] = [
   { position: 17, name: 'Chlorine', weight: 35.453, symbol: 'Cl' },
   { position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar' },
   { position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K' },
-  { position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca' },
+  { position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca' }
 ];

@@ -3,10 +3,10 @@ section {
 }
 
 article {
-  margin-top: 2em;
+  margin-top: 1em;
 }
 
 .filter-input {
-  min-width: 300px;
+  width: 300px;
 }
 
