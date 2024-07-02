@@ -6,7 +6,7 @@ import {
   HttpContext
 } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
-import { devEnvironment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
 import { AUTH_ENABLED } from '../interceptors/auth.interceptor';
 import { Token } from '../interfaces/token';
 import { User } from '../interfaces/user';
@@ -20,7 +20,7 @@ export class AuthService {
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + this.getAccessToken()
     });
-    return this.http.get<User>(devEnvironment.userInfoURL, {
+    return this.http.get<User>(environment.userInfoURL, {
       headers,
       context: new HttpContext().set(AUTH_ENABLED, false)
     });
@@ -29,16 +29,16 @@ export class AuthService {
   exchangeCode(code: string): void {
     const body = new HttpParams()
       .set('grant_type', 'authorization_code')
-      .set('client_id', devEnvironment.clientID)
+      .set('client_id', environment.clientID)
       .set('code', code)
-      .set('redirect_uri', devEnvironment.redirectURI);
+      .set('redirect_uri', environment.redirectURI);
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded'
     });
 
     this.http
-      .post<Token>(devEnvironment.tokenURL, body.toString(), {
+      .post<Token>(environment.tokenURL, body.toString(), {
         headers,
         context: new HttpContext().set(AUTH_ENABLED, false)
       })
@@ -54,7 +54,7 @@ export class AuthService {
   }
 
   logout(): void {
-    const url = devEnvironment.logoutURL;
+    const url = environment.logoutURL;
     console.log(url);
     sessionStorage.clear();
     location.href = url;
@@ -70,7 +70,7 @@ export class AuthService {
 
     const body = new HttpParams()
       .set('grant_type', 'refresh_token')
-      .set('client_id', devEnvironment.clientID)
+      .set('client_id', environment.clientID)
       .set('refresh_token', refreshToken);
 
     const headers = new HttpHeaders({
@@ -78,7 +78,7 @@ export class AuthService {
     });
 
     return this.http
-      .post(devEnvironment.tokenURL, body.toString(), {
+      .post(environment.tokenURL, body.toString(), {
         headers,
         context: new HttpContext().set(AUTH_ENABLED, false)
       })
