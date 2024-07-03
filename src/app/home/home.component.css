@@ -1,11 +1,13 @@
 #title {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  margin: 1rem 2rem 1rem 2rem;
 }
-#business-name {
-  margin: 1rem;
-  line-height: 1.2;
+#logo {
+  margin-right: 1rem;
+  height: 54px;
+  width: 368px;
 }
 a {
   width: 120px;
@@ -14,12 +16,24 @@ a {
 }
 
 @media screen and (max-width: 800px) {
-  #business-name {
-    font-size: 2.5rem;
+  #logo {
+    height: 54px;
+    width: 368px;
   }
 }
 @media screen and (max-width: 550px) {
-  #business-name {
+  #logo {
+    height: 34px;
+    width: 230px;
+  }
+  a {
+    width: 50px;
+    padding: 0;
+  }
+  #logout-text {
     display: none;
+  }
+  #icon {
+    margin: 0;
   }
 }

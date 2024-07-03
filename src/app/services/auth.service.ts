@@ -3,9 +3,10 @@ import {
   HttpClient,
   HttpParams,
   HttpHeaders,
-  HttpContext
+  HttpContext,
+  HttpErrorResponse
 } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+import { Observable, catchError, tap, throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { AUTH_ENABLED } from '../interceptors/auth.interceptor';
 import { Token } from '../interfaces/token';
@@ -16,14 +17,38 @@ import { User } from '../interfaces/user';
 })
 export class AuthService {
   constructor(private http: HttpClient) {}
-  getUserInfo(): Observable<User> {
+
+  //Get user info, if this fails log user out
+  getUserInfo(): void {
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + this.getAccessToken()
     });
-    return this.http.get<User>(environment.userInfoURL, {
-      headers,
-      context: new HttpContext().set(AUTH_ENABLED, false)
-    });
+    this.http
+      .get<User>(environment.userInfoURL, {
+        headers,
+        context: new HttpContext().set(AUTH_ENABLED, false)
+      })
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          console.log('🚀 ~ HomeComponent ~ catchError ~ error:', error.status);
+          //For some reason error.status is undefined
+          if (error.message.includes('401')) {
+            console.log('logging out');
+            this.logout();
+          }
+          return throwError(
+            () =>
+              new Error(
+                `Error fetching user info: ${error.status}: ${error.message}`
+              )
+          );
+        })
+      )
+      .subscribe(userInfo => {
+        if (userInfo) {
+          console.log('🚀 ~ HomeComponent ~ ngOnInit ~ userInfo:', userInfo);
+        }
+      });
   }
 
   exchangeCode(code: string): void {
@@ -46,6 +71,8 @@ export class AuthService {
         sessionStorage.setItem('accessToken', tokenData.access_token);
         sessionStorage.setItem('idToken', tokenData.id_token);
         sessionStorage.setItem('refreshToken', tokenData.refresh_token);
+
+        this.getUserInfo();
       });
   }
 

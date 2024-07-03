@@ -12,8 +12,6 @@ import {
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthService } from '../services/auth.service';
-import { catchError, throwError } from 'rxjs';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -45,21 +43,8 @@ export class HomeComponent implements OnInit {
         this.router.navigate(['home']);
         this.authService.exchangeCode(authorizationCode);
       }
-    });
-
-    //Get user info, if this fails log user out
-    this.authService.getUserInfo().pipe(
-      catchError((error: HttpErrorResponse) => {
-        if (error.status === 401) {
-          this.authService.logout();
-        }
-        return throwError(
-          () => new Error(`Error fetching user info: ${error.status}: ${error.message}`)
-        );
-      })
-    ).subscribe(userInfo => { 
-      if (userInfo) {
-        console.log("🚀 ~ HomeComponent ~ ngOnInit ~ userInfo:", userInfo);
+      else if(this.authService.getAccessToken()) {
+        this.authService.getUserInfo();
       }
     });
   }

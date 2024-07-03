@@ -18,6 +18,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatIcon } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-sales',
@@ -35,7 +37,9 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
     MatCardModule,
     MatDatepickerModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatIcon,
+    MatButtonModule
   ],
   providers: [provideNativeDateAdapter()],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -60,6 +64,10 @@ export class SalesComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+  }
+
+  refresh() {
+    // TODO: update table with new data
   }
 
   private _filter(value: string): string[] {
