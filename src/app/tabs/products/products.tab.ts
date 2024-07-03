@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatCard } from '@angular/material/card';
 import { MatCardContent } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,8 +14,11 @@ import { HttpErrorResponse } from '@angular/common/http';
   standalone: true,
   imports: [MatCard, MatCardContent, MatIconModule, MatButtonModule]
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnInit {
   constructor(private apiService: ApiService) {}
+  ngOnInit(): void {
+    this.refresh();
+  }
   title = 'products';
   productPrice: number = 0;
 
@@ -26,7 +29,7 @@ export class ProductsComponent {
           '🚀 ~ ProductsComponent ~ this.apiService.getProduct ~ product:',
           product
         );
-        this.productPrice = product.price;
+        this.productPrice = product.total;
       }
     });
   }

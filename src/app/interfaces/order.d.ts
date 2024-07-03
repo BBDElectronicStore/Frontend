@@ -1,9 +1,9 @@
 export interface Order {
-    orderId: number,
-    customerId: number,
+    order_id: number,
+    persona_id: string,
     quantity: number,
-    status: OrderStatus,
-    totalCost: number
+    status_name: string,
+    total_cost: number
 }
 
-type OrderStatus = 'places' | 'pending' | 'approved' | 'complete' | 'denied' | 'cancelled';
+// type OrderStatus = 'placed' | 'pending' | 'approved' | 'denied' | 'cancelled' | 'collected';

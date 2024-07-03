@@ -1,45 +1,38 @@
 <section fxLayout="column" fxLayoutAlign="space-evenly stretch">
   <form fxLayout="row" fxLayoutAlign="space-between stretch" fxLayoutGap="2em">
     <mat-form-field class="filter-input">
-      <mat-label>Search</mat-label>
-      <input
-        type="text"
-        aria-label="Search"
-        matInput
-        [formControl]="myControl"
-        [matAutocomplete]="auto"
-      />
-      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelectionChange($event)">
-        <mat-option [value]="''">(Clear)</mat-option>
-        @for (option of filteredOptions | async; track option) {
-        <mat-option [value]="option">{{option}}</mat-option>
-        }
-      </mat-autocomplete>
+        <mat-label>Persona ID</mat-label>
+        <input matInput id="personaSearch" #personaSearchInput>
     </mat-form-field>
-    <button mat-fab aria-label="Refresh" (click)="refresh()">
+    <button mat-fab aria-label="Refresh" (click)="refresh()" class="business-button">
       <mat-icon>refresh</mat-icon>
     </button>
   </form>
   <article class="mat-elevation-z3">
     <table mat-table [dataSource]="dataSource">
-      <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef>No.</th>
-        <td mat-cell *matCellDef="let element">{{element.position}}</td>
+      <ng-container matColumnDef="order_id">
+        <th mat-header-cell *matHeaderCellDef>Order ID</th>
+        <td mat-cell *matCellDef="let order">{{order.order_id}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>Name</th>
-        <td mat-cell *matCellDef="let element">{{element.name}}</td>
+      <ng-container matColumnDef="persona_id">
+        <th mat-header-cell *matHeaderCellDef>Persona ID</th>
+        <td mat-cell *matCellDef="let order">{{order.persona_id}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="weight">
-        <th mat-header-cell *matHeaderCellDef>Weight</th>
-        <td mat-cell *matCellDef="let element">{{element.weight}}</td>
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef>Quantity</th>
+        <td mat-cell *matCellDef="let order">{{order.quantity}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="symbol">
-        <th mat-header-cell *matHeaderCellDef>Symbol</th>
-        <td mat-cell *matCellDef="let element">{{element.symbol}}</td>
+      <ng-container matColumnDef="status_name">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let order">{{order.status_name}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="total_cost">
+        <th mat-header-cell *matHeaderCellDef>Total Cost</th>
+        <td mat-cell *matCellDef="let order">{{order.total_cost}}</td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -49,7 +42,7 @@
     <mat-paginator
       [pageSizeOptions]="[5, 10, 20]"
       showFirstLastButtons
-      aria-label="Select page of periodic elements"
+      aria-label="Select page"
     >
     </mat-paginator>
   </article>
