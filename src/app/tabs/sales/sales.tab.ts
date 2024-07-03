@@ -20,6 +20,7 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatIcon } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-sales',
@@ -45,6 +46,7 @@ import { MatButtonModule } from '@angular/material/button';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SalesComponent implements OnInit, AfterViewInit {
+  constructor(private apiService: ApiService) {}
   //Filters
   myControl = new FormControl('');
   options: string[] = ['One', 'Two', 'Three'];
@@ -68,6 +70,11 @@ export class SalesComponent implements OnInit, AfterViewInit {
 
   refresh() {
     // TODO: update table with new data
+    this.apiService.getSales("124332").subscribe(sales => {
+      if (sales) {
+        console.log("🚀 ~ SalesComponent ~ this.apiService.getSales ~ sales:", sales)
+      }
+    });
   }
 
   private _filter(value: string): string[] {
