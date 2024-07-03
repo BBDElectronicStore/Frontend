@@ -23,7 +23,7 @@ export function authInterceptor(
     return handleRequestWithoutAuth(req, next);
   }
 
-  const authToken = authService.getAccessToken();
+  const authToken = authService.getIdToken();
   if (!authToken) {
     return throwError(
       () =>
