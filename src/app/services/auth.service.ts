@@ -77,6 +77,10 @@ export class AuthService {
   }
 
   getAccessToken(): string | null {
+    return sessionStorage.getItem('accessToken');
+  }
+
+  getIdToken(): string | null {
     return sessionStorage.getItem('idToken');
   }
 
