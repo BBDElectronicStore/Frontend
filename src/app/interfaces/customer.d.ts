@@ -1,4 +1,4 @@
 export interface Customer {
-    customerId: number,
-    username: string
+    customer_id: number,
+    persona_id: string
 }
