@@ -9,7 +9,8 @@
         [formControl]="myControl"
         [matAutocomplete]="auto"
       />
-      <mat-autocomplete #auto="matAutocomplete">
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelectionChange($event)">
+        <mat-option [value]="''">(Clear)</mat-option>
         @for (option of filteredOptions | async; track option) {
         <mat-option [value]="option">{{option}}</mat-option>
         }

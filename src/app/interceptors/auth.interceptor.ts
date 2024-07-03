@@ -88,7 +88,7 @@ function handleTokenRefresh(
 
       const retryReq = req.clone({
         setHeaders: {
-          Authorization: `Bearer ${res.access_token}`
+          Authorization: `Bearer ${res.id_token}`
         }
       });
       return next(retryReq);

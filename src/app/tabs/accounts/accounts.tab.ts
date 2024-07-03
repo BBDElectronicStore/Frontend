@@ -11,7 +11,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { map, startWith } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -49,7 +49,7 @@ export class AccountsComponent implements OnInit, AfterViewInit {
   constructor(private apiService: ApiService) {}
   //Filters
   myControl = new FormControl('');
-  options: string[] = ['One', 'Two', 'Three'];
+  options: string[] = ELEMENT_DATA.map(element => element.name);
   filteredOptions!: Observable<string[]>;
   //Table
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
@@ -75,6 +75,12 @@ export class AccountsComponent implements OnInit, AfterViewInit {
         console.log("🚀 ~ AccountsComponent ~ this.apiService.getCustomers ~ customers:", customers)
       }
     });
+  }
+
+  onSelectionChange(event: any){
+    console.log('onSelectionChange called', event.option.value);
+    const filterValue = event.option.value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   private _filter(value: string): string[] {
