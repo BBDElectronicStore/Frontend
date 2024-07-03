@@ -1,4 +1,5 @@
 export interface Order {
+    orderId: number,
     customerId: number,
     quantity: number,
     status: OrderStatus,

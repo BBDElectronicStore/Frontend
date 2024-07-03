@@ -1,4 +1,4 @@
 export interface Customer {
-    name: string,
-    banking_details: string
+    customerId: number,
+    username: string
 }
