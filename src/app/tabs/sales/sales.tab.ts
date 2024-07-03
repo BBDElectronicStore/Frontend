@@ -49,7 +49,7 @@ export class SalesComponent implements OnInit, AfterViewInit {
   constructor(private apiService: ApiService) {}
   //Filters
   myControl = new FormControl('');
-  options: string[] = ['One', 'Two', 'Three'];
+  options: string[] = ELEMENT_DATA.map(element => element.name);
   filteredOptions!: Observable<string[]>;
   //Table
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
@@ -75,6 +75,12 @@ export class SalesComponent implements OnInit, AfterViewInit {
         console.log("🚀 ~ SalesComponent ~ this.apiService.getSales ~ sales:", sales)
       }
     });
+  }
+
+  onSelectionChange(event: any){
+    console.log('onSelectionChange called', event.option.value);
+    const filterValue = event.option.value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   private _filter(value: string): string[] {

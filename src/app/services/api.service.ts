@@ -12,20 +12,21 @@ export class ApiService {
 
     constructor(private http: HttpClient){}
 
-    getCustomers(): Observable<Customer[]> {
+    //change back to object once tested
+    getCustomers(): Observable<any[]> {
         // Maybe pagination on backend
         // return this.http.get(this.baseURL + `/customer?page=${currentPage}&size=${currentPageSize}&name=${name}&date=${date}`)
-        return this.http.get<Customer[]>(this.baseURL + '/customer');
+        return this.http.get<any[]>(this.baseURL + '/customer');
     }
 
-    getSales(username: string): Observable<Order> {
+    getSales(username: string): Observable<any> {
         // Maybe pagination on backend
         // return this.http.get(this.baseURL + `/sales?page=${currentPage}&size=${currentPageSize}&name=${name}&date=${date}`)
-        return this.http.get<Order>(this.baseURL + `/customer/${username}`);
+        return this.http.get<any>(this.baseURL + `/customer/${username}`);
     }
 
-    getProduct(): Observable<Product> {
-        return this.http.get<Product>(this.baseURL + '/price');
+    getProduct(): Observable<any> {
+        return this.http.get<any>(this.baseURL + '/store/price');
     }
 
 }
