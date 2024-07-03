@@ -77,7 +77,7 @@ export class AuthService {
   }
 
   getAccessToken(): string | null {
-    return sessionStorage.getItem('accessToken');
+    return sessionStorage.getItem('idToken');
   }
 
   logout(): void {
