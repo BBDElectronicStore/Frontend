@@ -12,7 +12,6 @@ export class ApiService {
 
     constructor(private http: HttpClient){}
 
-    //change back to object once tested
     getCustomers(): Observable<Customer[]> {
         // Maybe pagination on backend
         // return this.http.get(this.baseURL + `/customer?page=${currentPage}&size=${currentPageSize}&name=${name}&date=${date}`)
