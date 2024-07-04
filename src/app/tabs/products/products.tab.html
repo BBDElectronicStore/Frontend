@@ -1,14 +1,38 @@
 <mat-card appearance="outlined" id="main">
-  <mat-card-content><img id="art" src="../assets/images/electronics.png" alt="Electronic Retailer Logo"></mat-card-content>
-  <mat-card-content><p>Introducing the ultimate companion for modern convenience: our sleek and versatile electronic device. Designed to seamlessly integrate into your daily life, this cutting-edge gadget offers a blend of functionality and style.
-    Imagine a device that effortlessly connects you to the digital world with its intuitive interface and vibrant display. Whether you're checking emails, streaming your favourite shows, or capturing memories with its high-resolution camera, this versatile gadget does it all.
-    Compact yet powerful, it fits perfectly in your hand or pocket, ready to accompany you on your adventures. With easy connectivity options and long-lasting battery life, you can stay connected without missing a beat.
-    Ideal for tech enthusiasts and casual users alike, our electronic marvel is your gateway to endless possibilities. Embrace the future of convenience and efficiency with this must-have device.
-    Experience innovation at your fingertips—order yours today and discover why this electronic wonder is a game-changer for everyone.</p></mat-card-content>
+  <mat-card-content
+    ><img
+      id="art"
+      src="../assets/images/electronics.png"
+      alt="Electronic Retailer Logo"
+  /></mat-card-content>
+  <mat-card-content
+    ><p>
+      Introducing the ultimate companion for modern convenience: our sleek and
+      versatile electronic device. Designed to seamlessly integrate into your
+      daily life, this cutting-edge gadget offers a blend of functionality and
+      style. Imagine a device that effortlessly connects you to the digital
+      world with its intuitive interface and vibrant display. Whether you're
+      checking emails, streaming your favourite shows, or capturing memories
+      with its high-resolution camera, this versatile gadget does it all.
+      Compact yet powerful, it fits perfectly in your hand or pocket, ready to
+      accompany you on your adventures. With easy connectivity options and
+      long-lasting battery life, you can stay connected without missing a beat.
+      Ideal for tech enthusiasts and casual users alike, our electronic marvel
+      is your gateway to endless possibilities. Embrace the future of
+      convenience and efficiency with this must-have device. Experience
+      innovation at your fingertips—order yours today and discover why this
+      electronic wonder is a game-changer for everyone.
+    </p></mat-card-content
+  >
 </mat-card>
 <section id="stats">
   <p id="price">Current price: {{productPrice}} BBDough</p>
-  <button mat-fab aria-label="Refresh" (click)="refresh()" class="business-button">
+  <button
+    mat-fab
+    aria-label="Refresh"
+    (click)="refresh()"
+    class="business-button"
+  >
     <mat-icon>refresh</mat-icon>
   </button>
 </section>
